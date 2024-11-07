@@ -2,7 +2,7 @@
  * @Author: akalsy hermanyu666@gmail.com
  * @Date: 2024-07-18 15:14:37
  * @LastEditors: akalsy hermanyu666@gmail.com
- * @LastEditTime: 2024-07-31 11:12:49
+ * @LastEditTime: 2024-11-03 21:33:31
  * @FilePath: /wetalk_server/src/routes/message.ts
  * @Description: Description
  */
@@ -115,6 +115,7 @@ export async function sendMessage(ctx: Context<SendMessageData>) {
     console.warn(to, isValid(to))
     if (isValid(to)) {
         toGroup = await Group.findOne({ _id: to });
+        console.log('toGroup', toGroup)
         assert(toGroup, '群组不存在');
     } else {
         const userId = to.replace(ctx.socket.user.toString(), '');
